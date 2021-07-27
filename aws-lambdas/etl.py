@@ -11,9 +11,12 @@ MY_STATION_CODE = "41605"
 
 # More info about API (in French) at: https://www.velib-metropole.fr/donnees-open-data-gbfs-du-service-velib-metropole
 
+# DynamoDB table name
+TABLE_NAME = "bikes"
+
 # Connect to DynamoDB
 db = boto3.resource("dynamodb")
-table = db.Table("bikes")
+table = db.Table(TABLE_NAME)
 
 def download_data():
     '''
