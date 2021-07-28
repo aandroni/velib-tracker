@@ -90,17 +90,21 @@ def index():
     if last_n_electric != 1:
         str_elec += "s"
 
+    color_p1 = "#1b9e77"
+    color_p2 = "#7570b3"
+
     ############################################################################
     # Plot 1: time series
     ############################################################################
     p1 = figure(
         plot_width=800,
+        plot_height=600,
         x_axis_label='Date',
         y_axis_label="Number of Bikes",
         x_axis_type="datetime"
     )
 
-    p1.line(df["datetime"], df["n_bikes"], line_color="#1b9e77", line_width=2)
+    p1.line(df["datetime"], df["n_bikes"], line_color=color_p1, line_width=2)
     p1.toolbar_location = None # Remove toolbar
     # Format x axis
     # fmt = ["%b %d %H:%M"]
@@ -120,6 +124,7 @@ def index():
     df_stats["x"] = x
     p2 = figure(
         plot_width=800,
+        plot_height=600,
         x_range=FactorRange(*x),
         x_axis_label="Hour of the Day",
         y_axis_label="Average Number of Bikes"
@@ -127,7 +132,7 @@ def index():
     cds = ColumnDataSource(df_stats)
 
     p2.vbar(x="x", top="n_bikes", source=cds, bottom=0, width=0.8,
-        fill_color="#7570b3", color=None)
+        fill_color=color_p2, color=None)
     p2.toolbar_location = None # Remove toolbar
     p2.x_range.group_padding = 0.2
     p2.y_range.start = 0

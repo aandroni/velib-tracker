@@ -1,7 +1,61 @@
-body {
-  background-color: blue;
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
 }
 
-p {
-  background-color: red;
+body {
+  background: #f4f4f4;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.current-status {
+  width: 40%;
+}
+
+h2 {
+  margin-bottom: 2px;
+}
+
+#table {
+  width: 40%;
+  text-align: center;
+  border-bottom: 1px solid #111;
+  padding-bottom: 8px;
+}
+
+.current-status p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-top: 0;
+}
+
+strong {
+  font-size: 20px;
+}
+
+.fig-title {
+  padding-top: 20px;
+}
+
+.graph-container {
+  width: 816px;
+  height: 616px;
+  background: #d0d0d0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  padding-top: 20px;
+  font-size: 12px;
+  font-style: italic;
 }
