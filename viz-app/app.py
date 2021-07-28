@@ -66,7 +66,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     # Get data
-    raw_data = get_data(testing=True)
+    raw_data = get_data(testing=False)
     df = pd.DataFrame(raw_data)
 
     # Add total number of bikes and datatime
@@ -82,7 +82,15 @@ def index():
     # Get last data point
     last_update = df.iloc[-1]["datetime"]
     last_n_mechanical = df.iloc[-1]["n_mechanical"]
+    if last_n_mechanical == 1:
+        last_n_mechanical = "1 mechanical bike"
+    else:
+        last_n_mechanical = f"{last_n_mechanical} mechanical bikes"
     last_n_electric = df.iloc[-1]["n_electric"]
+    if last_n_electric == 1:
+        last_n_electric = "1 electric bike"
+    else:
+        last_n_electric = f"{last_n_electric} electric bikes"
 
     ############################################################################
     # Plot 1: time series
