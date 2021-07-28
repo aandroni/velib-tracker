@@ -8,39 +8,57 @@ from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource, FactorRange
 from bokeh.embed import components
 
+
 # API exposed via AWS Lambda
 API_ADDRESS = "https://gep3hpn8p2.execute-api.eu-west-1.amazonaws.com/prod/bikes"
 
+
+def generate_synthetic_data():
+    '''
+    Generate synthetic data for testing
+    '''
+    n_days = 10 # Number of days data was collected
+    interval = 10 # Interval (in minutes) between collected data points
+    t0 = 1627289782 # Starting time stamp
+
+    random.seed(42)
+    n_data = n_days * 24 * 60 // interval
+    data = []
+    for curr in range(n_data):
+        response = {
+            "timestamp": t0 + interval * 60 * curr,
+            "n_mechanical": random.randint(0, 5),
+            "n_electric": random.randint(0, 3)
+        }
+        data.append(response)
+
+    return data
+
+
+def download_data():
+    '''
+    Pull data from bikes API
+    '''
+    http = urllib3.PoolManager()
+
+    # Download data from API (retry for max 3 times)
+    data = []
+    try:
+        r = http.request("GET", API_ADDRESS, retries=urllib3.util.Retry(3))
+        data = json.loads(r.data.decode("utf8"))
+    except urllib3.exceptions.MaxRetryError as e:
+        print(f"API unavailable at {API_ADDRESS}", e)
+
+    return data
+
+
 def get_data(testing=True):
-    # TODO: refactor
+    '''
+    Generate data (if testing=True) or get real data from API
+    '''
     if testing:
-        n_days = 10 # Number of days data was collected
-        interval = 10 # Interval (in minutes) between collected data points
-        t0 = 1627289782 # Starting time stamp
-
-        random.seed(42)
-        n_data = n_days * 24 * 60 // interval
-        raw_data = []
-        for curr in range(n_data):
-            response = {
-                "timestamp": t0 + interval * 60 * curr,
-                "n_mechanical": random.randint(0, 5),
-                "n_electric": random.randint(0, 3)
-            }
-            raw_data.append(response)
-    else:
-        # Get data from real API
-        http = urllib3.PoolManager()
-
-        # Download data from API (retry for max 3 times)
-        raw_data = []
-        try:
-            r = http.request("GET", API_ADDRESS, retries=urllib3.util.Retry(3))
-            raw_data = json.loads(r.data.decode("utf8"))
-        except urllib3.exceptions.MaxRetryError as e:
-            print(f"API unavailable at {API_ADDRESS}", e)
-
-    return raw_data
+        return generate_synthetic_data()
+    return download_data()
 
 
 app = Flask(__name__)
