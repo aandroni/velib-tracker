@@ -66,7 +66,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     # Get data
-    raw_data = get_data(testing=False)
+    raw_data = get_data(testing=True)
     df = pd.DataFrame(raw_data)
 
     # Add total number of bikes and datatime
@@ -82,15 +82,13 @@ def index():
     # Get last data point
     last_update = df.iloc[-1]["datetime"]
     last_n_mechanical = df.iloc[-1]["n_mechanical"]
-    if last_n_mechanical == 1:
-        last_n_mechanical = "1 mechanical bike"
-    else:
-        last_n_mechanical = f"{last_n_mechanical} mechanical bikes"
+    str_mech = "mechanical bike"
+    if last_n_mechanical != 1:
+        str_mech += "s"
     last_n_electric = df.iloc[-1]["n_electric"]
-    if last_n_electric == 1:
-        last_n_electric = "1 electric bike"
-    else:
-        last_n_electric = f"{last_n_electric} electric bikes"
+    str_elec = "electric bike"
+    if last_n_electric != 1:
+        str_elec += "s"
 
     ############################################################################
     # Plot 1: time series
@@ -102,15 +100,14 @@ def index():
         x_axis_type="datetime"
     )
 
-    # Format x axis
-    # fmt = ["%b %d %H:%M"]
-    # plot.xaxis[0].formatter = DatetimeTickFormatter(
-    #     months=fmt, days=fmt, hours=fmt, minutes=fmt
-    # )
-    # plot.xaxis.major_label_orientation = "vertical"
-
     p1.line(df["datetime"], df["n_bikes"], line_color="#1b9e77", line_width=2)
     p1.toolbar_location = None # Remove toolbar
+    # Format x axis
+    # fmt = ["%b %d %H:%M"]
+    # p1.xaxis[0].formatter = DatetimeTickFormatter(
+    #     months=fmt, days=fmt, hours=fmt, minutes=fmt
+    # )
+    # p1.xaxis.major_label_orientation = "vertical"
     p1_script, p1_div = components(p1)
 
     ############################################################################
@@ -145,7 +142,9 @@ def index():
         "p2_div": p2_div,
         "last_update": last_update,
         "last_n_mechanical": last_n_mechanical,
-        "last_n_electric": last_n_electric
+        "str_mech": str_mech,
+        "last_n_electric": last_n_electric,
+        "str_elec": str_elec
     }
     if request.method == 'GET':
         return render_template('index.html', **kwargs)
