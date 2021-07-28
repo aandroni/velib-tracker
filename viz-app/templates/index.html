@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bokeh -->
+  <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.3.3.min.js" integrity="sha384-dM3QQsP+wXdHg42wTqW85BjZQdLNNIXqlPw/BgKoExPmTG7ZLML4EGqLMfqHT6ON" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="static/styles.css">
+  <title>Velib Tracker</title>
+</head>
+<body>
+  <h1>Velib Tracker</h1>
+
+  <div class="current-status">
+    <p>Currently available: {{ last_n_mechanical }} mechanical bikes and {{ last_n_electric }} electric bikes.</p>
+  </div>
+
+
+  <div class="graph-container">
+    {{ p1_div|safe }}
+    {{ p1_script|safe }}  
+  </div>
+
+  <div class="graph-container">
+    {{ p2_div|safe }}
+    {{ p2_script|safe }}  
+  </div>
+
+  <footer>
+    <p>Last updated on: <span>{{ last_update }}</span></p>
+  </footer>
+</body>
+</html>

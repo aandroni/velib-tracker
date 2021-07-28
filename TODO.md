@@ -9,9 +9,9 @@
 
 - Flask app
     @ 2021-08-01
-    * [ ] Basic app (no functionality)
-    * [ ] Basic graphs (no real data)
-    * [ ] Graphs fetching data from API
+    * [x] Basic app (no functionality)
+    * [x] Basic graphs (no real data)
+    * [x] Graphs fetching data from API
     * [ ] Polish UI
     * [ ] Polish graphs
     * [ ] Add some ML or stats
