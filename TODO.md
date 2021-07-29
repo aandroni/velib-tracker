@@ -4,7 +4,7 @@
 ## Doing
 
 - Container for Flask app
-    * [ ] Create dockerfile
+    * [x] Create dockerfile
     * [ ] Automate pushing image to dockerhub
     * [ ] Setup Azure to run container
 
