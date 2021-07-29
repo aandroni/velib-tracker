@@ -100,7 +100,7 @@ def index():
         plot_width=800,
         plot_height=600,
         x_axis_label='Date',
-        y_axis_label="Number of Bikes",
+        y_axis_label="Number of bikes",
         x_axis_type="datetime"
     )
 
@@ -126,8 +126,8 @@ def index():
         plot_width=800,
         plot_height=600,
         x_range=FactorRange(*x),
-        x_axis_label="Hour of the Day",
-        y_axis_label="Average Number of Bikes"
+        x_axis_label="Hour of the day",
+        y_axis_label="Average number of bikes"
     )
     cds = ColumnDataSource(df_stats)
 

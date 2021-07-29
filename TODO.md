@@ -1,20 +1,12 @@
 ## To Do
 
+
+## Doing
+
 - Container for Flask app
     * [ ] Create dockerfile
     * [ ] Automate pushing image to dockerhub
     * [ ] Setup Azure to run container
-
-## Doing
-
-- Flask app
-    @ 2021-08-01
-    * [x] Basic app (no functionality)
-    * [x] Basic graphs (no real data)
-    * [x] Graphs fetching data from API
-    * [ ] Polish UI
-    * [ ] Polish graphs
-    * [ ] Add some ML or stats
 
 ## Done
 
@@ -28,3 +20,10 @@
     * [x] Link to API Gateway
     * [x] Test that exposed API works properly
     * [x] Automate archive creation with Makefile (MAYBE)
+- Flask app
+    * [x] Basic app (no functionality)
+    * [x] Basic graphs (no real data)
+    * [x] Graphs fetching data from API
+    * [x] Polish UI
+    * [x] Polish graphs
+    * [x] Add some stats

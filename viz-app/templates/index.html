@@ -13,20 +13,20 @@
 <body>
   <h1>Velib Tracker</h1>
 
-  <h2 id="table">Available on Last Update</h2>
+  <h2 id="table">Available bikes</h2>
   <div class="current-status">
     <p>
       <span><strong>{{ last_n_mechanical }}</strong> {{ str_mech }}</span>
       <span><strong>{{ last_n_electric }}</strong> {{ str_elec }}</span></p>
   </div>
 
-  <h2 class="fig-title">Number of Bikes over Time</h2>
+  <h2 class="fig-title">Number of bikes through time</h2>
   <div class="graph-container">
     {{ p1_div|safe }}
     {{ p1_script|safe }}  
   </div>
 
-  <h2 class="fig-title">Average Number of Bikes During the Day</h2>
+  <h2 class="fig-title">Average number of bikes during the day</h2>
   <div class="graph-container">
     {{ p2_div|safe }}
     {{ p2_script|safe }}  
