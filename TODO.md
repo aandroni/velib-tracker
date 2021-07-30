@@ -5,7 +5,7 @@
 
 - Container for Flask app
     * [x] Create dockerfile
-    * [ ] Automate pushing image to dockerhub
+    * [x] Automate pushing viz-app image to dockerhub
     * [ ] Setup Azure to run container
 
 ## Done
