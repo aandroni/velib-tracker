@@ -66,7 +66,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     # Get data
-    raw_data = get_data(testing=True)
+    raw_data = get_data(testing=False)
     df = pd.DataFrame(raw_data)
 
     # Add total number of bikes and datatime
@@ -90,6 +90,7 @@ def index():
     if last_n_electric != 1:
         str_elec += "s"
 
+    # Colors used in the figures below
     color_p1 = "#1b9e77"
     color_p2 = "#7570b3"
 
@@ -106,12 +107,6 @@ def index():
 
     p1.line(df["datetime"], df["n_bikes"], line_color=color_p1, line_width=2)
     p1.toolbar_location = None # Remove toolbar
-    # Format x axis
-    # fmt = ["%b %d %H:%M"]
-    # p1.xaxis[0].formatter = DatetimeTickFormatter(
-    #     months=fmt, days=fmt, hours=fmt, minutes=fmt
-    # )
-    # p1.xaxis.major_label_orientation = "vertical"
     p1_script, p1_div = components(p1)
 
     ############################################################################
