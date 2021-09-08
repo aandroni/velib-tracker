@@ -32,4 +32,6 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
+          build-args: |
+            API_URL=${{ secrets.API_URL }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/viz-app:latest
