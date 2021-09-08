@@ -1,3 +1,4 @@
+import os
 import urllib3
 import json
 import random
@@ -9,8 +10,8 @@ from bokeh.models import ColumnDataSource, FactorRange
 from bokeh.embed import components
 
 
-# API exposed via AWS Lambda
-API_ADDRESS = "https://gep3hpn8p2.execute-api.eu-west-1.amazonaws.com/prod/bikes"
+# Address of API exposed via AWS Lambda
+API_ADDRESS = os.getenv("API_URL")
 
 
 def generate_synthetic_data():
