@@ -45,7 +45,7 @@ def download_data():
     data = []
     try:
         r = http.request("GET", API_ADDRESS, retries=urllib3.util.Retry(3))
-        data = json.loads(r.data.decode("utf8"))
+        data = json.loads(json.loads(r.data.decode("utf8"))["body"])
     except urllib3.exceptions.MaxRetryError as e:
         print(f"API unavailable at {API_ADDRESS}", e)
 
