@@ -22,4 +22,4 @@ The project was designed in a modular way and its components are:
 
 ## Project Output
 
-The data were collected during the span of approximately one month (from July 26th 2021 to August 27th 2021). A screenshot of the web application monitoring the number of available bikes can be found in the folder `output`.
+The data were collected during the span of approximately one month, from August 28th to September 28th 2021. The data and a screenshot of the running web application can be found in the folder `output`.
