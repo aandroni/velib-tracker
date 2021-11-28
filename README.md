@@ -12,7 +12,7 @@ Velib offers a [public API](https://velib-metropole-opendata.smoove.pro/opendata
 
 The project was designed in a modular way and its components are:
 
-1. ETL (Extract, Transform, Load) component: I wrote an *AWS Lambda* function (`aws-lambdas/etl.py`) to query the Velib API, extract the data I was interested in, and store the filtered data in a *AWS DynamoDB* table. I then used *AWS CloudWatch Events* to trigger the *Lambda* function every 10 minutes (starting on July 26th 2021).
+1. ETL (Extract, Transform, Load) component: I wrote an *AWS Lambda* function (`aws-lambdas/etl.py`) to query the Velib API, extract the data I was interested in, and store the filtered data in a *AWS DynamoDB* table. I then used *AWS CloudWatch Events* to trigger the *Lambda* function every 10 minutes (starting on August 28th 2021).
 
 2. Public API: I wrote a second *AWS Lambda* function (`aws-lambdas/api.py`), which was used, together with *AWS API Gateway*, to build a public REST API exposing the data stored in my *DynamoDB* table.
 
